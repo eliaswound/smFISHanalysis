@@ -13,22 +13,24 @@
 # !{sys.executable} -m pip install -U scikit-learn
 # importing everything
 
-from platform import python_version
-import os
-from PIL import Image
-import numpy as np
-import tifffile
-import scipy.ndimage as nd
-import matplotlib.pyplot as plt
-from skimage import data
-import bigfish
-import bigfish.stack as stack
-import bigfish.multistack as multistack
-import bigfish.plot as plot
-import glob
-
 
 # Enter your file path over here
 # You should include all files over here
-filepath = ""
+filepath="D:/Northwestern/Research/Christian Petersen Lab/080322_testing_for_quest"
+
+from GettingAngleRead import *
+from Preprocessing import *
+from spotdetection import *
+
+minimal_distance = (1, 1, 1)
+kernel_size = (2.5, 1.5, 1.5)
+resolution = (373, 95, 95)
+spot_size = (350, 250, 250)
+
+angle = get_angle_read(filepath)
+imarray = smFISHpreprocessing(kernel_size, minimal_distance,filepath)
+rotated_imarray = rotateImage(angle,imarray)
+del imarray
+get_elbow_curve(rotated_imarray,resolution,spot_size,filepath)
+spots, threshold = spot_detection(imarry,resolution, spot_size,kernel_size,minimal_distance)
 
