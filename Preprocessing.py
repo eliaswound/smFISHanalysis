@@ -12,7 +12,7 @@ def smFISHpreprocessing(kernel_size,minimal_distance,file_path = '.'):
                Apply both LoG and local max filter and save max projection and original image
     :param file_path: The file path the image is in. Default use current file path
     :param kernel_size: The Kernel size used for LoG filter, 3d or 2d nd array
-    :param minmal_sitacne: The minimal distance between each spots for creating local maximum filter 3d or 2d nd array
+    :param minmal_dsitacne: The minimal distance between each spots for creating local maximum filter 3d or 2d nd array
     :return: The ndarray the Image look like.
     """
     import numpy as np

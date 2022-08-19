@@ -1,5 +1,3 @@
-from typing import Union, Any
-
 
 def get_angle_read(file_path="."):
     """
@@ -16,9 +14,14 @@ def get_angle_read(file_path="."):
     import statistics
     os.chdir(file_path)
     csv_name = glob.glob("*.csv")
-    if not csv_name:
-        return 0
-    else:
+    if csv_name:
         angle_read = pd.read_csv(csv_name[0])
         angle = 90 - statistics.mean(angle_read["Angle"])
         return angle
+    else:
+        return 0
+
+
+
+
+

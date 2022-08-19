@@ -31,6 +31,8 @@ def spot_detection(imarray, resolution, spot_size, kernel_size,minimal_distance)
     :return: Detected spots, threshold
     """
     import bigfish.detection
+    import bigfish.stack as stack
+    import bigfish.plot as plot
     spots, threshold = bigfish.detection.detect_spots(
         images=imarray,
         return_threshold=True,
@@ -46,4 +48,12 @@ def spot_detection(imarray, resolution, spot_size, kernel_size,minimal_distance)
         file.write("\r dtype: {0}".format(spots.dtype))
         file.write("\r threshold: {0}".format(threshold))
         file.write("\r SNR ratio:{0}".format(snr_ratio))
+    max_imarray = stack.maximum_projection(imarray)
+    # Plot detection
+    plot.plot_detection(max_imarray,
+                        spots,
+                        contrast=True,
+                        path_output="results/detectionmap2D_rotated",
+                        ext = "tif",
+                        show = False)
     return spots, threshold
