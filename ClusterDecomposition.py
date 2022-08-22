@@ -1,4 +1,4 @@
-def cluster_decomposition(imarray,spots,resolution,spot_size,greeks):
+def cluster_decomposition(imarray,spots,resolution,spot_size,greeks,filepath = "."):
     """
     Decomposition of clusters 
     :param imarray: Image array 
@@ -8,9 +8,11 @@ def cluster_decomposition(imarray,spots,resolution,spot_size,greeks):
     :param greeks: greeks alpaha beta gamma 
     :return: 
     """
+    import os
     import bigfish.detection
     import bigfish.plot as plot
     import bigfish.stack as stack
+    os.chdir(filepath)
     alpha = greeks[0]
     beta = greeks[1]
     gamma = greeks[2]

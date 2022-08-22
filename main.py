@@ -38,7 +38,8 @@ imarray = smFISHpreprocessing(kernel_size, minimal_distance,filepath)
 imarray = rotateImage(angle,imarray)
 # Get elbow curve and spot detection
 get_elbow_curve(imarray,resolution,spot_size,filepath)
-spots, threshold = spot_detection(imarray,resolution, spot_size,kernel_size,minimal_distance)
+spots, threshold = spot_detection(imarray,resolution, spot_size,kernel_size,minimal_distance,filepath)
+spots_plot_detection(spots,imarray,filepath)
 # Decluster and decompose spots
 spots_post_decomposition,dense_regions,reference_spot = cluster_decomposition(imarray,spots,resolution,spot_size, greeks)
 spots_post_clustering, clusters = declustering(imarray,spots_post_decomposition,resolution,declustering_parameters)

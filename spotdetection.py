@@ -5,7 +5,7 @@ def get_elbow_curve(imarray, resolution,spot_size, filepath = "."):
     :param resolution: Resolution on z,x,y as nanommeters
     :param spot_size: Spot size or spot radius
     :param filepath: Filepath, default current filepath
-    :return: Filepath
+    :return: no return
     """
     import bigfish.plot as plot
     import os
@@ -16,23 +16,23 @@ def get_elbow_curve(imarray, resolution,spot_size, filepath = "."):
         spot_radius=spot_size,
         path_output="results/Elbow",
         show=False)
-    elbow_path = filepath + "results/Elbow"
-    return elbow_path
 
-def spot_detection(imarray, resolution, spot_size, kernel_size,minimal_distance):
+    return
+
+def spot_detection(imarray, resolution, spot_size, kernel_size,minimal_distance,filepath = "."):
     """
     This is the core spot detection program:
     input:
     :param imarray: Image array for spot detection
-    :param resoltuion: Resolution z,x,y
+    :param resolution: Resolution z,x,y
     :param spot_size: Spot size
-    :param kernel_size: Kernal size for LoG filter
+    :param kernel_size: Kernel size for LoG filter
     :param minimal_distance: Minimal distance between spots
     :return: Detected spots, threshold
     """
     import bigfish.detection
-    import bigfish.stack as stack
-    import bigfish.plot as plot
+    import os
+    os.chdir(filepath)
     spots, threshold = bigfish.detection.detect_spots(
         images=imarray,
         return_threshold=True,
@@ -48,6 +48,13 @@ def spot_detection(imarray, resolution, spot_size, kernel_size,minimal_distance)
         file.write("\r dtype: {0}".format(spots.dtype))
         file.write("\r threshold: {0}".format(threshold))
         file.write("\r SNR ratio:{0}".format(snr_ratio))
+    return spots,threshold
+
+def spots_plot_detection(spots,imarray,filepath = "."):
+    import os
+    import bigfish.stack as stack
+    import bigfish.plot as plot
+    os.chdir(filepath)
     max_imarray = stack.maximum_projection(imarray)
     # Plot detection
     plot.plot_detection(max_imarray,
@@ -56,4 +63,4 @@ def spot_detection(imarray, resolution, spot_size, kernel_size,minimal_distance)
                         path_output="results/detectionmap2D_rotated",
                         ext = "tif",
                         show = False)
-    return spots, threshold
+    return
