@@ -41,7 +41,7 @@ def cluster_decomposition(imarray,spots,resolution,spot_size,greeks,filepath = "
                         show=False)
     return spots_post_decomposition,dense_regions,reference_spot
 
-def declustering(imarray, spots_post_decomposition,resolution,deculstering_parameters):
+def declustering(imarray, spots_post_decomposition,resolution,deculstering_parameters,filepath = "."):
     """
     Declustering code
     :param spots_post_decompositions: spots
@@ -55,6 +55,8 @@ def declustering(imarray, spots_post_decomposition,resolution,deculstering_param
     import bigfish.detection
     import bigfish.stack as stack
     import bigfish.plot as plot
+    import os
+    os.chdir(filepath)
     spots_post_clustering, clusters = bigfish.detection.detect_clusters(
         spots=spots_post_decomposition,
         voxel_size=resolution,
