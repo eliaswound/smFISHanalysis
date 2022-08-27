@@ -17,9 +17,9 @@ from Preprocessing import *
 from spotdetection import *
 from ClusterDecomposition import *
 from DetectionPlots import *
+import os
 # You should include all files over here
-filepath = "D:/Northwestern/Research/Christian Petersen Lab/080322_testing_for_quest"
-
+filepath = "D:/Northwestern/Research/Christian Petersen Lab/062922_Multi_image_test"
 minimal_distance = (1, 1, 1)   # Minimal distance of spots z,x, y
 kernel_size = (2.5, 1.5, 1.5)   # Kernel size of LoG filter, z usuall 2.5-4, x,y start with 1.5
 resolution = (373, 95, 95)   # Resolution in nanometer on image, retrieve from LASX
@@ -32,15 +32,20 @@ declustering_parameters = (400, 4)
 # Fist number is radius of single spots,
 # second number is minimal spots in a cluster
 # Read the angle and preprocess the image
-angle = get_angle_read(filepath)
-imarray = smFISHpreprocessing(kernel_size, minimal_distance,filepath)
-# Rotate the image to a good 90 degree
-imarray = rotateImage(angle,imarray)
-# Get elbow curve and spot detection
-get_elbow_curve(imarray,resolution,spot_size,filepath)
-spots, threshold = spot_detection(imarray,resolution, spot_size,kernel_size,minimal_distance,filepath)
-spots_plot_detection(spots,imarray,filepath)
-# Decluster and decompose spots
-spots_post_decomposition,dense_regions,reference_spot = cluster_decomposition(imarray,spots,resolution,spot_size, greeks,filepath)
-spots_post_clustering, clusters = declustering(imarray,spots_post_decomposition,resolution,declustering_parameters,filepath)
-histogram_of_spots(spots,imarray,spots_post_decomposition,spots_post_clustering,clusters,filepath)
+os.chdir(filepath)
+dir_set = next(os.walk(filepath))[1]
+for item in dir_set:
+    os.chdir(item)
+    angle = get_angle_read()
+    imarray = smFISHpreprocessing(kernel_size, minimal_distance)
+    # Rotate the image to a good 90 degree
+    imarray = rotateImage(angle,imarray)
+    # Get elbow curve and spot detection
+    get_elbow_curve(imarray,resolution,spot_size)
+    spots, threshold = spot_detection(imarray,resolution, spot_size,kernel_size,minimal_distance)
+    spots_plot_detection(spots,imarray)
+    # Decluster and decompose spots
+    spots_post_decomposition,dense_regions,reference_spot = cluster_decomposition(imarray,spots,resolution,spot_size, greeks)
+    spots_post_clustering, clusters = declustering(imarray,spots_post_decomposition,resolution,declustering_parameters)
+    histogram_of_spots(spots,imarray,spots_post_decomposition,spots_post_clustering,clusters)
+    os.chdir("..")
