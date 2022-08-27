@@ -1,0 +1,5 @@
+Read me file
+This is a code written by Elias Guan from Christian Petersen Lab in Northwestern University.
+From Leica software, export all images as tif and separate channels. Leave all that in one single folder.
+Run Sort_channels.py to sort them into different folders. You have to know you filepath to run that.
+Run Main.py to do smFISH analysis and spot detection.
