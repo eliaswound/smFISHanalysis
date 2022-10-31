@@ -72,7 +72,7 @@ def rotateImage(angle, imarray):
     from scipy import ndimage
     import tifffile
     import bigfish.stack
-    angle = (-angle+90)%360
+    angle = -((90-angle)%360)
     imarray_rotated = ndimage.interpolation.rotate(imarray,angle,axes = (1,2))
     max_imarray_rotated = bigfish.stack.maximum_projection(imarray_rotated)
     # Save image by tifffile

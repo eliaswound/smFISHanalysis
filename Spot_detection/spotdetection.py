@@ -32,6 +32,7 @@ def spot_detection(imarray, resolution, spot_size, kernel_size,minimal_distance,
     """
     import bigfish.detection
     import os
+    import numpy as np
     os.chdir(filepath)
     spots, threshold = bigfish.detection.detect_spots(
         images=imarray,
@@ -43,6 +44,7 @@ def spot_detection(imarray, resolution, spot_size, kernel_size,minimal_distance,
 
     # Out put your spot detection results as txt file
     # Also added a estimation of signal-to-noise ratio
+    np.save('results/spot.npy', spots)
     with open ("results/spot_info.txt","w") as file :
         file.write("\r shape: {0}".format(spots.shape))
         file.write("\r dtype: {0}".format(spots.dtype))

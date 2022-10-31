@@ -16,6 +16,7 @@ def histogram_of_spots(spots, imarray, spots_post_decomposition, spots_post_clus
     # Code block 9.2
     # -----------------------------------------------------------------------
     # histogram of spot post decomposition
+    fig = plt.figure(figsize=(10, 7))
     ypos = spots_post_decomposition[:, 1]
     plt.hist(ypos, bins_yplot)
     plt.title("Spots detection post decomposition")
@@ -26,6 +27,7 @@ def histogram_of_spots(spots, imarray, spots_post_decomposition, spots_post_clus
     # Code block 9.3
     # -------------------------------------------------------------------------
     # histogram of spot post declustering
+    fig = plt.figure(figsize=(10, 7))
     ypos = spots_post_clustering[:, 1]
     plt.hist(ypos, bins_yplot)
     plt.title("Spots detection post cluster detection")
@@ -36,6 +38,7 @@ def histogram_of_spots(spots, imarray, spots_post_decomposition, spots_post_clus
     # Code block 9.4
     # -------------------------------------------------------------------------
     # histogram of two dimenstions
+    fig = plt.figure(figsize=(10, 7))
     ypos = spots[:, 1]
     xpos = spots[:, 2]
     plt.hist2d(xpos, ypos, bins=20)
@@ -46,6 +49,7 @@ def histogram_of_spots(spots, imarray, spots_post_decomposition, spots_post_clus
     # Code block 9.5
     # --------------------------------------------------------------------------
     # Histogram of clusters
+    fig = plt.figure(figsize=(10, 7))
     ypos_cluster = clusters[:, :3][:, 1]
     plt.hist(ypos_cluster, bins_yplot)
     plt.title("cluster detection")

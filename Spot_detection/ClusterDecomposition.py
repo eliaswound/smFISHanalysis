@@ -56,12 +56,14 @@ def declustering(imarray, spots_post_decomposition,resolution,deculstering_param
     import bigfish.stack as stack
     import bigfish.plot as plot
     import os
+    import numpy as np
     os.chdir(filepath)
     spots_post_clustering, clusters = bigfish.detection.detect_clusters(
         spots=spots_post_decomposition,
         voxel_size=resolution,
         radius=radius,
         nb_min_spots=nb_min_spots)
+    np.save('results/clusters.npy', clusters)
     with open("results/Cluster_info.txt", "w") as file:
         file.write("detected spots after clustering")
         file.write("\r shape: {0}".format(spots_post_clustering.shape))
