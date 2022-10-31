@@ -32,6 +32,7 @@ kernel_size = (2.5, 1.5, 1.5)   # Kernel size of LoG filter, z usuall 2.5-4, x,y
 resolution = (373, 95, 95)   # Resolution in nanometer on image, retrieve from LASX
 spot_size = (350, 250, 250)   # expected spot size, usuall 200-600 in x,y, 300-800 on z
 greeks = (0.7, 1, 5)  # Special numbers for decomposition
+background_filter = 35
 # First number alpha: Impact number of spots in each regtion
 # Second number beta, affect number of regions to decompose
 # Third number gamma, filtering for image denoise

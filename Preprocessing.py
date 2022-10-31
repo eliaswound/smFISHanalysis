@@ -1,3 +1,6 @@
+from main import background_filter
+
+
 def smFISHpreprocessing(kernel_size,minimal_distance,file_path = '.'):
     """
     This function will batch with pre-processing of the tiff image
@@ -29,6 +32,7 @@ def smFISHpreprocessing(kernel_size,minimal_distance,file_path = '.'):
     # Read in all files
     tiff_name = glob.glob("*.tif")
     imarray = tifffile.imread(tiff_name[0])
+    imarray[imarray<background_filter] = 0
     # Maxmium intensity projection
     max_imarray = bigfish.stack.maximum_projection(imarray)
     tifffile.imwrite('results/max_imarray.tif', max_imarray, photometric='minisblack')
@@ -50,6 +54,7 @@ def smFISHpreprocessing(kernel_size,minimal_distance,file_path = '.'):
     max_imarray_LoG = bigfish.stack.maximum_projection(imarray_LoG)
     max_imarray_LoG_localmax = bigfish.stack.maximum_projection(imarray_LoG_localmax)
     # Save files
+    tifffile.imwrite('results/filtered_imarray', imarray, photometric='minisblack')
     tifffile.imwrite('results/imarray_LoG.tif', imarray_LoG, photometric='minisblack')
     tifffile.imwrite('results/imarray_LoG_localmax.tif', imarray_LoG_localmax, photometric='minisblack')
     tifffile.imwrite('results/max_imarray_LoG_localmax.tif', max_imarray_LoG_localmax, photometric='minisblack')
@@ -69,6 +74,7 @@ def rotateImage(angle, imarray):
     from scipy import ndimage
     import tifffile
     import bigfish.stack
+    angle = (-angle+90)%360
     imarray_rotated = ndimage.interpolation.rotate(imarray,angle,axes = (1,2))
     max_imarray_rotated = bigfish.stack.maximum_projection(imarray_rotated)
     # Save image by tifffile
