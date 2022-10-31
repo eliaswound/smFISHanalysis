@@ -1,7 +1,5 @@
-from main import background_filter
 
-
-def smFISHpreprocessing(kernel_size,minimal_distance,file_path = '.'):
+def smFISHpreprocessing(kernel_size,minimal_distance,background_filter,file_path = '.'):
     """
     This function will batch with pre-processing of the tiff image
     including: Read in Tiff image and return it as ndarray

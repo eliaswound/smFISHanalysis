@@ -40,14 +40,14 @@ def spot_detection(imarray, resolution, spot_size, kernel_size,minimal_distance,
         spot_radius= spot_size, # in nanometer (one value per dimension zyx)
         log_kernel_size= kernel_size,
         minimum_distance= minimal_distance)
-    snr_ratio = bigfish.detection.compute_snr_spots(imarray, spots, resolution, spot_size)
+
     # Out put your spot detection results as txt file
     # Also added a estimation of signal-to-noise ratio
     with open ("results/spot_info.txt","w") as file :
         file.write("\r shape: {0}".format(spots.shape))
         file.write("\r dtype: {0}".format(spots.dtype))
         file.write("\r threshold: {0}".format(threshold))
-        file.write("\r SNR ratio:{0}".format(snr_ratio))
+
     return spots,threshold
 
 def spots_plot_detection(spots,imarray,filepath = "."):
