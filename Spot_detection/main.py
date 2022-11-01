@@ -25,7 +25,7 @@ from DetectionPlots import *
 # TODO Solve the edge detection problem
 # TODO output detection map in 3D
 
-filepath = "D:/Northwestern/Research/Chris_Petersen_lab/1031intensityextraction"
+filepath = "D:/Northwestern/Research/Chris_Petersen_lab/1031intensityextraction/Image2"
 
 minimal_distance = (1, 1, 1)   # Minimal distance of spots z,x, y
 kernel_size = (2.5, 1.5, 1.5)   # Kernel size of LoG filter, z usuall 2.5-4, x,y start with 1.5
