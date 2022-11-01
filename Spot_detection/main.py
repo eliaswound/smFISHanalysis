@@ -36,7 +36,7 @@ background_filter = 30
 # First number alpha: Impact number of spots in each regtion
 # Second number beta, affect number of regions to decompose
 # Third number gamma, filtering for image denoise
-declustering_parameters = (400, 4)
+declustering_parameters = (600, 4)
 # Fist number is radius of single spots,
 # second number is minimal spots in a cluster
 # Read the angle and preprocess the image
