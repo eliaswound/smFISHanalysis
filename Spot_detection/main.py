@@ -25,7 +25,7 @@ from DetectionPlots import *
 # TODO Solve the edge detection problem
 # TODO output detection map in 3D
 
-filepath = "D:/Northwestern/Research/Christian_Petersen_Lab/060722_python_script_test"
+filepath = "D:/Northwestern/Research/Chris_Petersen_lab/1031intensityextraction/Image2"
 
 
 minimal_distance = (1, 1, 1)   # Minimal distance of spots z,x, y
@@ -39,7 +39,7 @@ background_filter = 30
 # First number alpha: Impact number of spots in each regtion
 # Second number beta, affect number of regions to decompose
 # Third number gamma, filtering for image denoise
-declustering_parameters = (400, 4)
+declustering_parameters = (600, 4)
 # Fist number is radius of single spots,
 # second number is minimal spots in a cluster
 # Read the angle and preprocess the image
