@@ -27,9 +27,12 @@ from DetectionPlots import *
 
 filepath = "D:/Northwestern/Research/Christian_Petersen_Lab/060722_python_script_test"
 
+
 minimal_distance = (1, 1, 1)   # Minimal distance of spots z,x, y
 kernel_size = (2.5, 1.5, 1.5)   # Kernel size of LoG filter, z usuall 2.5-4, x,y start with 1.5
-resolution = (373, 95, 95)   # Resolution in nanometer on image, retrieve from LASX
+resolution = Read_resoluiton(".")
+    if not resolution:
+        resolution = (373, 95, 95)   # Resolution in nanometer on image, retrieve from LASX
 spot_size = (600, 400, 400)   # expected spot size, usuall 200-600 in x,y, 300-800 on z
 greeks = (0.7, 1, 5)  # Special numbers for decomposition
 background_filter = 30

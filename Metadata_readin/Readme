@@ -1,0 +1,10 @@
+Export from LASX.
+Settings:
+Select Export channels, and export RAW images.
+Put all the files in the same folder
+If you need read metadata to get xyz resolution
+Run MetaData_imread.py
+If you need automatic sorting your file
+Run Sort channels.py
+You should run metadata imread before sort channels.
+If you need both, run main.py

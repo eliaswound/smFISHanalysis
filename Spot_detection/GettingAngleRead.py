@@ -22,6 +22,19 @@ def get_angle_read(file_path="."):
         return 0
 
 
-
-
+def Read_resoluiton (filepath = "."):
+    import os
+    import glob
+    os.chrdir(filepath)
+    txt_name = glob.glob("*.txt")
+    if txt_name:
+        with open(txt_name[0], "r") as file:
+            number = file.read()
+        number = number.split("\n")
+        z_dim = float(number[0])
+        x_dim = float(number[1])
+        y_dim = float(number[2])
+        return (z_dim,x_dim,y_dim)
+    else:
+        return None
 

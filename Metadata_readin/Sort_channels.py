@@ -26,6 +26,7 @@ if len(filenames) !=0:
             shutil.move(filename,"565")
         elif int(filename[-5]) == 2:
             shutil.move(filename,"647")
+            shutil.move(filename[0:-13]+".txt","647")
 os.chdir("647")
 ch3_filenames = glob("*.tif")
 ch3_dirlist = os.listdir()
@@ -34,4 +35,7 @@ for i in range(len(ch3_filenames)):
     if dir_name not in ch3_dirlist:
         os.mkdir(dir_name)
         shutil.move(ch3_filenames[i],dir_name)
+        shutil.move(ch3_filenames[i][0:-13]+".txt",dir_name)
+
+
 
