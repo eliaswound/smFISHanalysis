@@ -19,13 +19,13 @@ def get_angle_read(file_path="."):
         angle = 90 - statistics.mean(angle_read["Angle"])
         return angle
     else:
-        return 0
+        return 90
 
 
 def Read_resoluiton (filepath = "."):
     import os
     import glob
-    os.chrdir(filepath)
+    os.chdir(filepath)
     txt_name = glob.glob("*.txt")
     if txt_name:
         with open(txt_name[0], "r") as file:

@@ -7,10 +7,10 @@ import os
 import tifffile
 import matplotlib.pyplot as plt
 from intensity_extraction import *
-filepath  = "D:/Northwestern/Research/Chris_Petersen_lab/1031intensityextraction/Image1"
+filepath  = "D:/Northwestern/Research/Christian_Petersen_Lab/112822_temp/Colocalization/647"
 os.chdir(filepath)
-resolution = (373, 95, 95)   # Resolution in nanometer on image, retrieve from LASX
-spot_size = (600, 400, 400)   # expected spot size, usuall 200-600 in x,y, 300-800 on z
+resolution = (373, 142, 142)   # Resolution in nanometer on image, retrieve from LASX
+spot_size = (400, 200, 200)   # expected spot size, usuall 200-600 in x,y, 300-800 on z
 spotnames = glob.glob('results/*spot.npy')
 clusternames = glob.glob('results/*clusters.npy')
 imagenames = glob.glob("results/*imarray_rotated.tif")

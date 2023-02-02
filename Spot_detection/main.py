@@ -25,17 +25,17 @@ from DetectionPlots import *
 # TODO Solve the edge detection problem
 # TODO output detection map in 3D
 
-filepath = "D:/Northwestern/Research/Chris_Petersen_lab/1031intensityextraction/Image2"
+filepath = "D:/Northwestern/Research/Christian_Petersen_Lab/112722_temp/EvenOdd_565_4"
 
 
 minimal_distance = (1, 1, 1)   # Minimal distance of spots z,x, y
-kernel_size = (2.5, 1.5, 1.5)   # Kernel size of LoG filter, z usuall 2.5-4, x,y start with 1.5
+kernel_size = (2.5, 1.3, 1.3)   # Kernel size of LoG filter, z usuall 2.5-4, x,y start with 1.5
 resolution = Read_resoluiton(".")
-    if not resolution:
-        resolution = (373, 95, 95)   # Resolution in nanometer on image, retrieve from LASX
-spot_size = (600, 400, 400)   # expected spot size, usuall 200-600 in x,y, 300-800 on z
+if not resolution:
+    resolution = (361, 142, 142)   # Resolution in nanometer on image, retrieve from LASX
+spot_size = (600, 300, 300)   # expected spot size, usuall 200-600 in x,y, 300-800 on z
 greeks = (0.7, 1, 5)  # Special numbers for decomposition
-background_filter = 30
+background_filter = 20
 # First number alpha: Impact number of spots in each regtion
 # Second number beta, affect number of regions to decompose
 # Third number gamma, filtering for image denoise
