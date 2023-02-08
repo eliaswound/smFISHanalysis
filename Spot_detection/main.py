@@ -25,7 +25,7 @@ from DetectionPlots import *
 # TODO Solve the edge detection problem
 # TODO output detection map in 3D
 
-filepath = "D:/Northwestern/Research/Christian_Petersen_Lab/112722_temp/EvenOdd_565_4"
+filepath = "D:/Northwestern/Research/Chris_Petersen_Lab/2023/0207_codetest"
 
 
 minimal_distance = (1, 1, 1)   # Minimal distance of spots z,x, y
@@ -35,7 +35,6 @@ if not resolution:
     resolution = (361, 142, 142)   # Resolution in nanometer on image, retrieve from LASX
 spot_size = (600, 300, 300)   # expected spot size, usuall 200-600 in x,y, 300-800 on z
 greeks = (0.7, 1, 5)  # Special numbers for decomposition
-background_filter = 20
 # First number alpha: Impact number of spots in each regtion
 # Second number beta, affect number of regions to decompose
 # Third number gamma, filtering for image denoise
@@ -44,7 +43,7 @@ declustering_parameters = (600, 4)
 # second number is minimal spots in a cluster
 # Read the angle and preprocess the image
 angle = get_angle_read(filepath)
-imarray = smFISHpreprocessing(kernel_size, minimal_distance,background_filter,filepath)
+imarray = smFISHpreprocessing(kernel_size, minimal_distance,filepath)
 # Rotate the image to a good 90 degree
 imarray = rotateImage(angle,imarray)
 # Get elbow curve and spot detection
