@@ -1,13 +1,4 @@
-20221031:
-Added filter of background in spot detection
-Spot intensity extraction protocols in development.
+20230225
+New development goal
+1: Re-agrange functions
 
-2023-02-01
-Development goal: Try to circle detection in 3D and estimate detection quality.
-Functions need to add:
-    For each x,y,z spot detected
-    Add one Yellow circle at neighboring plane
-    Add one Magenta circle at the plane detected
-    Create a tiff file
-    Merge channels and output as a merged Image
-Test Image: 633 channel for colocalization dual-color experiment 01/31/22
